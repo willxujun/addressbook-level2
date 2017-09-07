@@ -144,6 +144,7 @@ public class StorageFile {
         } catch (JAXBException jaxbe) {
             throw new StorageOperationException("Error parsing file data format");
         } catch (IllegalValueException ive) {
+            System.out.println(ive.getMessage());
             throw new StorageOperationException("File contains illegal data values; data type constraints not met");
         }
     }
