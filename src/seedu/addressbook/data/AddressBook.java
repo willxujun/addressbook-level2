@@ -81,6 +81,7 @@ public class AddressBook {
     public void addPerson(Person toAdd) throws DuplicatePersonException {
         allPersons.add(toAdd);
         syncTagsWithMasterList(toAdd);
+
     }
 
     /**

@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
  * Represents a Person's address in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidAddress(String)}
  */
-public class Address {
+public class Address implements Comparable<Address> {
 
     public static final String EXAMPLE = "123, some street";
     public static final String MESSAGE_ADDRESS_CONSTRAINTS =
@@ -23,10 +23,10 @@ public class Address {
                     + "\\[(?<postalCode>\\d{6})\\]");
 
     public final String value;
-    public Block _block;
-    public Street _street;
-    public Unit _unit;
-    public PostalCode _postalCode;
+    private Block _block;
+    private Street _street;
+    private Unit _unit;
+    private PostalCode _postalCode;
     private boolean isPrivate;
 
 
@@ -82,6 +82,10 @@ public class Address {
                 && this._street.getStreet().equals(((Address) other)._street.getStreet())
                 && this._unit.getUnit().equals(((Address) other)._unit.getUnit())
                 && this._postalCode.getCode().equals(((Address) other)._postalCode.getCode())); // state check
+    }
+
+    public int compareTo(Address other) {
+        return this.value.compareTo(other.value);
     }
 
     @Override

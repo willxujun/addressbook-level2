@@ -51,6 +51,7 @@ public class UniquePersonList implements Iterable<Person> {
             throw new DuplicatePersonException();
         }
         internalList.addAll(initialTags);
+        Collections.sort(internalList);
     }
 
     /**
@@ -63,6 +64,7 @@ public class UniquePersonList implements Iterable<Person> {
             throw new DuplicatePersonException();
         }
         internalList.addAll(persons);
+        Collections.sort(internalList);
     }
 
     /**
@@ -108,6 +110,7 @@ public class UniquePersonList implements Iterable<Person> {
             throw new DuplicatePersonException();
         }
         internalList.add(toAdd);
+        Collections.sort(internalList);
     }
 
     /**
@@ -120,6 +123,7 @@ public class UniquePersonList implements Iterable<Person> {
         if (!personFoundAndDeleted) {
             throw new PersonNotFoundException();
         }
+        Collections.sort(internalList);
     }
 
     /**
