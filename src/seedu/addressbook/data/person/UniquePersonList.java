@@ -99,6 +99,15 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * Finds the index of the person in the list.
+     * @param person the person to be found
+     * @return the index of the person in the list
+     */
+    public int indexOf(Person person) {
+        return internalList.indexOf(person);
+    }
+
+    /**
      * Adds a person to the list.
      *
      * @throws DuplicatePersonException if the person to add is a duplicate of an existing person in the list.

@@ -101,6 +101,15 @@ public class AddressBook {
     }
 
     /**
+     * Finds the index of the desired person in the address book
+     * @param toFind the person to be found
+     * @return the index of the person in the address book
+     */
+    public int findIndexOf(Person toFind) {
+        return allPersons.indexOf(toFind);
+    }
+
+    /**
      * Clears all persons and tags from the address book.
      */
     public void clear() {
