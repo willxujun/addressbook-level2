@@ -118,7 +118,9 @@ public class Main {
             storage.save(addressBook);
             return result;
         }
-
+        catch (StorageOperationException soe) {
+            return new CommandResult("Error writing to file. Perhaps turn off read-only.", lastShownList);
+        }
         catch (Exception e) {
             ui.showToUser(e.getMessage());
             throw new RuntimeException(e);

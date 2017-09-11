@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
  */
 public class Address implements Comparable<Address> {
 
-    public static final String EXAMPLE = "123, some street";
+    public static final String EXAMPLE = "[1][2][103][111111]";
     public static final String MESSAGE_ADDRESS_CONSTRAINTS =
             "Match failed. Person addresses should be in the following format, including \"[]\" with nothing in between each pair of brackets: \n"
             +"[block number][street line][unit number][6 digit postal code]";
