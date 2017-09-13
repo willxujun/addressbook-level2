@@ -2,26 +2,45 @@ package seedu.addressbook.commands;
 
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.stack.CommandPair;
+
+import java.util.EmptyStackException;
+
 import static seedu.addressbook.ui.TextUi.DISPLAYED_INDEX_OFFSET;
 
 public class UndoCommand extends Command {
     public static final String COMMAND_WORD = "undo";
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+    public void setIsUndoingAdd(int isUndoingAdd) {
+        this.isUndoingAdd = isUndoingAdd;
+    }
+
     private Person person;
+
     private int isUndoingAdd;
 
     public UndoCommand() {
-        CommandPair pair = undoStack.pop();
-        this.person = pair.getPerson();
-        this.isUndoingAdd = pair.isAdd();
     }
+
 
     @Override
     public boolean isUndoCommand() {
         return true;
     }
 
-    public Command prepareCommand() {
+    public Command prepareCommand() throws EmptyStackException {
+        if(undoStack.isEmpty()) {
+            throw new EmptyStackException();
+        }
+
+        CommandPair pair = undoStack.pop();
+        this.person = pair.getPerson();
+        this.isUndoingAdd = pair.isAdd();
+
         Command toUndo;
+
         if(isUndoingAdd == 0) {
             toUndo = new AddCommand(person, true);
         } else {
