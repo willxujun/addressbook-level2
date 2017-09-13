@@ -23,7 +23,7 @@
   list
 
 ##########################################################
-# test add person command, setup state for futuer tests
+# test add person command, setup state for further tests
 ##########################################################
 
   # should catch invalid args format
@@ -54,6 +54,37 @@
   # should not allow adding duplicate persons
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/[1][2][3][444444] t/tubers t/starchy
 
+##########################################################
+# test undo command, repeat add for further tests
+##########################################################
+
+  #should be able to undo addition, traversing the undoStack from the latest command
+  undo
+  undo
+  undo
+  undo
+
+  #should be able to undo deletion
+  delete 1
+  undo
+
+  #should be able to undo till stack is empty
+  undo
+
+  #should be able to flag exception when undo on an empty stack
+  undo
+
+  #set up for further tests
+  add Adam Brown p/111111 e/adam@gmail.com a/[1][2][3][444444]
+  list
+  add Betsy Choo pp/222222 pe/benchoo@nus.edu.sg pa/[1][2][3][444444] t/secretive
+  list
+  add Charlie Dickson pp/333333 e/charlie.d@nus.edu.sg a/[1][2][3][444444] t/friends t/school
+  list
+  add Dickson Ee p/444444 pe/dickson@nus.edu.sg a/[1][2][3][444444] t/friends
+  list
+  add Esther Potato p/555555 e/esther@not.a.real.potato pa/[1][2][3][444444] t/tubers t/starchy
+  list
 ##########################################################
 # test view/viewall persons command
 ##########################################################
@@ -141,7 +172,7 @@
   list
 
 ##########################################################
-# test clear command
+#                                 test clear command
 ##########################################################
 
   # clears all
