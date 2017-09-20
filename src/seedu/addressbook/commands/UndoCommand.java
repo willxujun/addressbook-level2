@@ -49,20 +49,4 @@ public class UndoCommand extends Command {
         }
         return toUndo;
     }
-
-    /*
-    @Override
-    public CommandResult execute() {
-        CommandResult result;
-        if(isUndoingAdd == 0) {
-            AddCommand add = new AddCommand(person);
-            result = reExecuteCommand(add);
-        } else {
-            int index = addressBook.findIndexOf(person);
-            DeleteCommand delete = new DeleteCommand(index);
-            result = reExecuteCommand(delete);
-        }
-        return result;
-    }
-    */
 }
